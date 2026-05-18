@@ -1,0 +1,200 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+/* ══════════════════════════════
+   DARK THEME
+══════════════════════════════ */
+[data-theme="dark"] {
+  --bg:             #050508;
+  --bg2:            #0d0d14;
+  --surface:        rgba(255,255,255,0.04);
+  --surface2:       rgba(255,255,255,0.07);
+  --border:         rgba(255,255,255,0.08);
+  --border2:        rgba(255,255,255,0.14);
+  --text:           #ffffff;
+  --text2:          rgba(255,255,255,0.65);
+  --text3:          rgba(255,255,255,0.35);
+  --text4:          rgba(255,255,255,0.18);
+  --input-bg:       rgba(255,255,255,0.05);
+  --input-border:   rgba(255,255,255,0.1);
+  --navbar-bg:      rgba(5,5,8,0.9);
+  --card-bg:        rgba(255,255,255,0.03);
+  --shadow:         rgba(0,0,0,0.5);
+  --shadow2:        rgba(0,0,0,0.2);
+  --accent:         #e94560;
+  --accent-glow:    rgba(233,69,96,0.35);
+  --success:        #00b894;
+  --info:           #6c63ff;
+  --grid-line:      rgba(255,255,255,0.03);
+}
+
+/* ══════════════════════════════
+   LIGHT THEME — Premium Clean
+══════════════════════════════ */
+[data-theme="light"] {
+  --bg:             #ffffff;
+  --bg2:            #f7f8fc;
+  --surface:        rgba(255,255,255,0.95);
+  --surface2:       rgba(255,255,255,1);
+  --border:         rgba(0,0,0,0.07);
+  --border2:        rgba(0,0,0,0.12);
+  --text:           #0a0a0f;
+  --text2:          #4a4a6a;
+  --text3:          #8888aa;
+  --text4:          #bbbbcc;
+  --input-bg:       #ffffff;
+  --input-border:   rgba(0,0,0,0.1);
+  --navbar-bg:      rgba(255,255,255,0.92);
+  --card-bg:        #ffffff;
+  --shadow:         rgba(0,0,0,0.06);
+  --shadow2:        rgba(0,0,0,0.03);
+  --accent:         #e94560;
+  --accent-glow:    rgba(233,69,96,0.15);
+  --success:        #00b894;
+  --info:           #6c63ff;
+  --grid-line:      rgba(0,0,0,0.03);
+}
+
+/* ══════════════════════════════
+   BODY
+══════════════════════════════ */
+body {
+  font-family: 'Inter', system-ui, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  min-height: 100vh;
+  overflow-x: hidden;
+  transition: background 0.5s ease, color 0.5s ease;
+}
+
+[data-theme="dark"] body::before,
+body[data-theme="dark"]::before {
+  content: "";
+  position: fixed; top:0; left:0; width:100%; height:100%;
+  background:
+    radial-gradient(ellipse at 15% 50%, rgba(233,69,96,0.1) 0%, transparent 55%),
+    radial-gradient(ellipse at 85% 15%, rgba(108,99,255,0.1) 0%, transparent 55%),
+    radial-gradient(ellipse at 50% 85%, rgba(0,184,148,0.07) 0%, transparent 55%);
+  animation: bgPulse 10s ease-in-out infinite alternate;
+  z-index:-1; pointer-events:none;
+}
+
+[data-theme="light"] body::before,
+body[data-theme="light"]::before {
+  content: "";
+  position: fixed; top:0; left:0; width:100%; height:100%;
+  background:
+    radial-gradient(ellipse at 15% 50%, rgba(233,69,96,0.04) 0%, transparent 55%),
+    radial-gradient(ellipse at 85% 15%, rgba(108,99,255,0.04) 0%, transparent 55%),
+    radial-gradient(ellipse at 50% 85%, rgba(0,184,148,0.03) 0%, transparent 55%);
+  z-index:-1; pointer-events:none;
+}
+
+@keyframes bgPulse {
+  0%   { opacity:0.8; transform:scale(1); }
+  100% { opacity:1;   transform:scale(1.05); }
+}
+
+/* ══════════════════════════════
+   GRID BACKGROUND
+══════════════════════════════ */
+.grid-bg {
+  background-image:
+    linear-gradient(var(--grid-line) 1px, transparent 1px),
+    linear-gradient(90deg, var(--grid-line) 1px, transparent 1px);
+  background-size: 50px 50px;
+}
+
+/* ══════════════════════════════
+   GLASS
+══════════════════════════════ */
+.glass {
+  background: var(--surface) !important;
+  backdrop-filter: blur(24px) saturate(180%) !important;
+  -webkit-backdrop-filter: blur(24px) saturate(180%) !important;
+  border: 1px solid var(--border) !important;
+  border-radius: 20px !important;
+  transition: background 0.5s, border 0.5s !important;
+}
+
+[data-theme="light"] .glass {
+  box-shadow: 0 4px 24px var(--shadow), 0 1px 0 rgba(255,255,255,0.8) inset !important;
+}
+
+/* ══════════════════════════════
+   BUTTONS
+══════════════════════════════ */
+.glow-btn {
+  background: linear-gradient(135deg, #e94560 0%, #c0392b 100%);
+  color: white; border: none; border-radius: 12px;
+  padding: 0.85rem 2rem; font-size: 0.95rem; font-weight: 600;
+  cursor: pointer; transition: all 0.3s ease;
+  box-shadow: 0 4px 20px rgba(233,69,96,0.3);
+  width: 100%; letter-spacing: 0.3px;
+  position: relative; overflow: hidden;
+}
+.glow-btn::before {
+  content: ""; position: absolute; top:0; left:-100%;
+  width:100%; height:100%;
+  background: linear-gradient(90deg,transparent,rgba(255,255,255,0.15),transparent);
+  transition: left 0.5s ease;
+}
+.glow-btn:hover::before { left:100%; }
+.glow-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 30px rgba(233,69,96,0.5);
+}
+.glow-btn:active { transform: scale(0.97); }
+.glow-btn:disabled { opacity:0.5; cursor:not-allowed; transform:none; }
+
+/* ══════════════════════════════
+   INPUTS
+══════════════════════════════ */
+.glass-input {
+  width: 100%; padding: 0.85rem 1.1rem;
+  background: var(--input-bg) !important;
+  border: 1px solid var(--input-border) !important;
+  border-radius: 12px !important;
+  color: var(--text) !important;
+  font-size: 0.92rem;
+  font-family: 'Inter', system-ui, sans-serif;
+  transition: all 0.3s;
+  margin-bottom: 1rem; display: block;
+}
+.glass-input::placeholder { color: var(--text3); }
+.glass-input:focus {
+  outline: none !important;
+  border-color: rgba(233,69,96,0.5) !important;
+  box-shadow: 0 0 0 3px rgba(233,69,96,0.1) !important;
+  background: var(--surface2) !important;
+}
+.glass-input option { background: var(--bg2); color: var(--text); }
+
+[data-theme="light"] .glass-input {
+  box-shadow: 0 2px 8px var(--shadow2) !important;
+}
+
+/* ══════════════════════════════
+   SCROLLBAR
+══════════════════════════════ */
+::-webkit-scrollbar { width:5px; }
+::-webkit-scrollbar-track { background: var(--bg); }
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(#e94560, #6c63ff);
+  border-radius: 3px;
+}
+
+/* ══════════════════════════════
+   UTILITIES
+══════════════════════════════ */
+@keyframes spin { to { transform: rotate(360deg); } }
+@keyframes blink { 0%,100%{opacity:1} 50%{opacity:0} }
+
+.spinner {
+  width:48px; height:48px;
+  border: 3px solid rgba(233,69,96,0.15);
+  border-top-color: #e94560;
+  border-radius: 50%;
+  animation: spin 0.8s linear infinite;
+}

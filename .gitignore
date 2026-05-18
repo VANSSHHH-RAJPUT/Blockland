@@ -1,0 +1,45 @@
+# Dependencies
+node_modules/
+.pnp
+.pnp.js
+
+# Environment variables
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+# Hardhat
+/blockland/blockchain/artifacts/
+/blockland/blockchain/cache/
+/blockland/blockchain/typechain/
+/blockland/blockchain/typechain-types/
+/blockland/blockchain/coverage/
+/blockland/blockchain/coverage.json
+/blockland/blockchain/.openzeppelin/
+
+# Flutter/Dart
+/blockland/blockland_mobile/.dart_tool/
+/blockland/blockland_mobile/.flutter-plugins
+/blockland/blockland_mobile/.flutter-plugins-dependencies
+/blockland/blockland_mobile/.pub-cache/
+/blockland/blockland_mobile/.pub/
+/blockland/blockland_mobile/build/
+
+# Vite/React
+/blockland/blockland-frontend/dist/
+/blockland/blockland-frontend/build/
+
+# Logs
+logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*
+
+# System
+.DS_Store
+Thumbs.db
